@@ -1,0 +1,8 @@
+@import "fonts.scss";
+/*MIXINS*/
+@mixin font-roboto($weight, $size, $line-height: normal) {
+  font-family: "Roboto";
+  font-weight: $weight;
+  font-size: $size;
+  line-height: $line-height;
+}

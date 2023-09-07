@@ -1,0 +1,137 @@
+@import "/src/assets/style/mixins.scss";
+@import "/src/assets/style/variables.scss";
+
+.card,
+.card-main {
+  height: 500px;
+  width: 100%;
+  border: 1px solid $borderProduct;
+  cursor: pointer;
+  background-color: $blackCardColor;
+
+  &:hover {
+    box-shadow: 0px 0px 16px 4px rgba(51, 108, 151, 0.16);
+    transform: scale(1.1);
+    transition: 0.3s;
+  }
+}
+.content {
+  width: 90%;
+  margin: 0 auto;
+}
+.product {
+  &-discount-block {
+    position: absolute;
+    z-index: 2;
+  }
+  &-discount {
+    width: 70px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+
+    &-paragraph {
+      color: $textDiscountColor;
+      width: 100%;
+      text-align: center;
+      @include font-roboto(700, 20px);
+    }
+  }
+
+  &-image-block {
+    width: 100%;
+    position: relative;
+    height: 210px;
+  }
+  &-image {
+    position: absolute;
+    margin: auto;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    vertical-align: middle;
+    width: auto;
+    max-width: 100%;
+    height: auto;
+    max-height: 100%;
+    z-index: 1;
+  }
+  &-name-block {
+    margin-top: 15px;
+    height: 30px;
+  }
+  &-name {
+    @include font-roboto(500, 20px);
+  }
+  &-description-block {
+    height: 180px;
+  }
+  &-description {
+    @include font-roboto(200, 14px);
+  }
+  &-price-block {
+    height: 50px;
+  }
+  &-fullprice {
+    @include font-roboto(400, 15px);
+    text-decoration: line-through;
+  }
+  &-price {
+    @include font-roboto(700, 25px);
+    color: $priceColor;
+    margin-top: 10px;
+  }
+}
+.discount {
+  &-max {
+    background-color: $maxDiscountColor;
+  }
+  &-middle {
+    background-color: $middleDiscountColor;
+  }
+  &-low {
+    background-color: $lowDiscountColor;
+  }
+}
+.discount-price {
+  &-max {
+    color: $maxDiscountPriceColor;
+  }
+  &-middle {
+    color: $middleDiscountPriceColor;
+  }
+  &-low {
+    color: $lowDiscountPriceColor;
+  }
+}
+
+@media (min-width: $medium-screen) {
+  .card-main {
+    .product {
+      &-image-block {
+        height: 270px;
+      }
+      &-name-block {
+        margin-top: 20px;
+        height: 40px;
+      }
+      &-name {
+        @include font-roboto(500, 25px);
+      }
+      &-description-block {
+        height: 90px;
+      }
+      &-description {
+        @include font-roboto(200, 17px);
+      }
+      &-fullprice {
+        @include font-roboto(400, 18px);
+      }
+      &-price {
+        @include font-roboto(700, 35px);
+        margin-top: 5px;
+      }
+    }
+  }
+}

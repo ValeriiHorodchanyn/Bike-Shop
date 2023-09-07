@@ -1,0 +1,97 @@
+<button class="back-btn" [routerLink]="['/products']">
+  <img
+    class="back-icon"
+    src="../../../assets/images/back-icon.png"
+    alt="back-icon"
+  />
+</button>
+<div class="container">
+  <div class="product-page-block" *ngIf="product$ | async as product">
+    <div class="product-image-block">
+      <figure class="product-image-content">
+        <img class="product-image-img" [src]="product.imgUrl" alt="img" />
+        <p class="product-image-color">{{ product.color | replaceCommas }}</p>
+      </figure>
+    </div>
+    <div class="product-description-block">
+      <h5 class="product-description-name">{{ product.name }}</h5>
+      <p class="product-description-description">{{ product.description }}</p>
+      <p class="product-description-price">
+        {{ product.price | currencyEuro : product.discount }}
+      </p>
+      <p class="product-description-rating">
+        <span *ngFor="let _ of maxRate; let i = index ">
+          {{ i < product.averageRating ? '★' : '☆' }}
+        </span>
+      </p>
+      <div class="product-descrption-review">
+        <a class="product-description-read-review" (click)="toggleReviews()"
+          >Read {{ product.review.length }} Reviews</a
+        >
+        <a class="product-description-write-review">Write a review</a>
+      </div>
+      <ng-container *ngIf="showReviews">
+        <div
+          class="product-description-review_users"
+          *ngFor="let review of product.review"
+        >
+          <span class="product-description-review_users-author">{{
+            review.author
+          }}</span
+          ><span class="product-description-review_users-rating">{{
+            review.rating
+          }}</span>
+          <p class="product-description-review_users-text">{{ review.text }}</p>
+        </div>
+      </ng-container>
+      <div class="product-description-color-block">
+        <p class="product-description-color-paragraph">Color</p>
+        <select class="product-description-color-select">
+          <option
+            class="product-description-color-option"
+            *ngFor="let color of product.color"
+          >
+            {{ color }}
+          </option>
+        </select>
+      </div>
+      <div class="product-description-size-block">
+        <p class="product-description-size-paragraph">Size</p>
+        <select class="product-description-size-select">
+          <option
+            class="product-description-color-option"
+            *ngFor="let size of product.size"
+          >
+            {{ size }}
+          </option>
+        </select>
+      </div>
+      <div class="product-description-availability-block">
+        <span class="product-description-availability">Availability: </span>
+        <span class="product-description-availability-text">
+          please select options
+        </span>
+      </div>
+      <p class="product-description-quantity">Quantity</p>
+      <input
+        class="product-description-quantity-input"
+        type="number"
+        max="10"
+        min="1"
+        value="1"
+      />
+      <button class="product-description-add_to_card-btn">
+        <span class="material-symbols-outlined"> shopping_cart </span>
+        <span class="product-description-add_to_card-btn-span">
+          Add to card</span
+        >
+      </button>
+      <button class="product-description-add_to_wish-btn">
+        <span class="material-symbols-outlined"> add </span>
+        <span class="product-description-add_to_card-btn-span">
+          Add to Wish List</span
+        >
+      </button>
+    </div>
+  </div>
+</div>

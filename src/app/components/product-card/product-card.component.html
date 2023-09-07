@@ -1,0 +1,57 @@
+<div
+  [routerLink]="['/products', product.id]"
+  [ngClass]="product.main ? 'card-main' : 'card'"
+>
+  <div class="content">
+    <figure class="product">
+      <div
+        class="product-discount-block"
+        [ngClass]="
+          product.discount > 0 ? 'product-discount-block' : 'display-none'
+        "
+      >
+        <div
+          class="product-discount"
+          [ngClass]="{
+            'discount-max': product.discount >= 70,
+            'discount-middle': product.discount >= 60 && product.discount < 70,
+            'discount-low': product.discount < 60
+          }"
+        >
+          <p class="product-discount-paragraph">- {{ product.discount }}%</p>
+        </div>
+      </div>
+      <div class="product-image-block">
+        <img class="product-image" [src]="product.imgUrl" alt="bike" />
+      </div>
+      <div class="product-name-block">
+        <p class="product-name">{{ product.name }}</p>
+      </div>
+      <div class="product-description-block">
+        <p class="product-description">
+          {{
+            product.main
+              ? (product.description | charactersLimitation : 220)
+              : (product.description | charactersLimitation : 180)
+          }}
+        </p>
+      </div>
+      <div class="product-price-block">
+        <p class="product-fullprice">
+          {{ product.price | currencyEuro }}
+        </p>
+        <p
+          class="product-price"
+          [ngClass]="{
+            'discount-price-max': product.discount >= 70,
+            'discount-price-middle':
+              product.discount >= 60 && product.discount < 70,
+            'discount-price-low': product.discount < 60
+          }"
+        >
+          {{ product.price | currencyEuro : product.discount }}
+        </p>
+      </div>
+    </figure>
+  </div>
+</div>

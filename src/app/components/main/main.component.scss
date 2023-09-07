@@ -1,0 +1,50 @@
+@import "/src/assets/style/mixins.scss";
+@import "/src/assets/style/variables.scss";
+
+.container {
+  width: 80%;
+  height: 100%;
+  max-width: 2000px;
+  min-height: 100vh;
+  margin: 0 auto;
+}
+.products {
+  width: 100%;
+  height: 100%;
+  margin-top: 50px;
+  margin-bottom: 50px;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  grid-auto-rows: 1fr;
+  grid-column-gap: 30px;
+  grid-row-gap: 30px;
+}
+.app-product-main {
+  grid-column: 1/3;
+  grid-row: 1/2;
+}
+
+@media (max-width: $extra-large-screen) {
+  .products {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+@media (max-width: $very-large-screen) {
+  .products {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+@media (max-width: $large-screen) {
+  .products {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (max-width: $small-screen) {
+  .products {
+    grid-template-columns: 1fr;
+  }
+  .app-product-main {
+    grid-column: 1/2;
+    grid-row: 1/2;
+  }
+}
